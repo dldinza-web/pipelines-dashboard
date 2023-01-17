@@ -2,6 +2,7 @@
   "name": "app",
   "private": "true",
   "scripts": {
+    "dev": "bin/dev",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
@@ -9,6 +10,9 @@
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.2.4",
     "esbuild": "^0.17.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.2",
     "sass": "^1.57.1"
   }
 }

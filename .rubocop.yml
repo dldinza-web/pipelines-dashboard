@@ -16,8 +16,10 @@ AllCops:
   Exclude:
     - 'db/schema.rb'
     - '**/*.js'
+    - '**/*.jsx'
     - '**/*.map'
     - '**/*.scss'
+    - '**/*.css'
     - '**/*.key'
     - '**/*.yml'
     - '**/*.enc'
