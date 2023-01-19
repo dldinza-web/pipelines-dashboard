@@ -54,6 +54,8 @@ gem "bootsnap", require: false
 gem 'config', '~> 4.1.0'
 gem 'dotenv-rails', '~> 2.8.1'
 
+gem "graphql", "~> 2.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -76,9 +78,10 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "graphiql-rails", '~> 1.8.0'
 end
 
 group :test do
   gem 'database_cleaner-active_record', '~> 2.0.1'
 end
-

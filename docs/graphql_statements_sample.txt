@@ -1,0 +1,53 @@
+GET:
+
+query {
+  users {
+    id
+    username
+  }
+}
+
+query {
+  user(id: 4) {
+    id
+    username
+  }
+}
+
+POST
+
+mutation {
+  createUser(input: { username: "testing" }) {
+    user {
+      username
+    }
+  }
+}
+
+PUT
+
+mutation {
+  editUser(input: {
+    id: 34,
+    username: "testing_2"
+  }) {
+    user{
+      id
+      username
+    }
+    errors
+  }
+}
+
+DELETE
+
+mutation {
+  deleteUser(input: { id: 3 }) {
+    user {
+      id
+      username
+    }
+    errors
+  }
+}
+
