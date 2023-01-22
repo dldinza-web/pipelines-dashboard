@@ -42,3 +42,9 @@ Style/GlobalStdStream:
 Style/RedundantFetchBlock:
   Enabled: false
 
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 30
+

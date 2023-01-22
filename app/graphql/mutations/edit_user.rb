@@ -9,14 +9,18 @@ module Mutations
     field :errors, [String], null: false
 
     def resolve(id:, username:)
-      user = User.find(id) rescue nil
+      user = begin
+        User.find(id)
+      rescue StandardError
+        nil
+      end
 
       if user
         user.username = username
 
         if user.save
           {
-            user: user,
+            user:,
             errors: []
           }
         else

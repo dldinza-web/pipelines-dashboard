@@ -9,20 +9,5 @@ module Types
 
     field :user, resolver: Queries::User
     field :users, resolver: Queries::Users
-
-    # field :user, Types::UserType do
-    #   description "Load one user"
-    #   argument  :id, ID, required: true
-    # end
-    # def user(id:)
-    #   User.find(id) rescue nil
-    # end
-
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
-    end
   end
 end
