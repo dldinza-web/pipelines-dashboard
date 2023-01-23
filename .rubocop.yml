@@ -29,6 +29,7 @@ AllCops:
     - '**/.keep'
     - 'bin/**/*'
     - 'node_modules/**/*'
+    - '**/*.tsbuildinfo'
     - '**/.DS_Store'
 
 Style/FrozenStringLiteralComment:
