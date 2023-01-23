@@ -17,6 +17,8 @@ AllCops:
     - 'db/schema.rb'
     - '**/*.js'
     - '**/*.jsx'
+    - '**/*.tsx'
+    - '**/*.d.ts'
     - '**/*.map'
     - '**/*.scss'
     - '**/*.css'
@@ -26,6 +28,8 @@ AllCops:
     - '**/*.erb'
     - '**/.keep'
     - 'bin/**/*'
+    - 'node_modules/**/*'
+    - '**/.DS_Store'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -41,9 +45,6 @@ Style/GlobalStdStream:
 
 Style/RedundantFetchBlock:
   Enabled: false
-
-Metrics/LineLength:
-  Max: 120
 
 Metrics/MethodLength:
   Max: 30
