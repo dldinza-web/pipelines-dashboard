@@ -1,8 +1,8 @@
-import { ApolloProvider } from '@apollo/client'
-import React from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { routes } from './router/routes'
-import GraphQLClient from './services/graphql-client'
+import { ApolloProvider } from '@apollo/client';
+import React from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { routes } from './router/routes';
+import GraphQLClient from './services/graphql-client';
 
 export const App = () => {
   return (
@@ -11,5 +11,5 @@ export const App = () => {
         <RouterProvider router={createBrowserRouter(routes)} />
       </ApolloProvider>
     </React.StrictMode>
-  )
-}
+  );
+};
