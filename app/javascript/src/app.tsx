@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { routes } from './router/routes'
 import GraphQLClient from './services/graphql-client'
 
-const App = () => {
+export const App = () => {
   return (
     <React.StrictMode>
       <ApolloProvider client={GraphQLClient}>
@@ -13,5 +13,3 @@ const App = () => {
     </React.StrictMode>
   )
 }
-
-export default App
