@@ -1,19 +1,20 @@
 module Mutations
   class AuthenticateUser < Mutations::BaseMutation
+    description 'Authenticate an account'
     null false
 
-    argument :username, String, required: true
     argument :password, String, required: true
+    argument :username, String, required: true
 
-    field :user, Types::UserType
     field :errors, [String]
+    field :user, Types::UserType
 
     def resolve(username:, password:)
       user = User.where(username:, password:).first
 
-      if (user.present?)
+      if user.present?
         {
-          user: user
+          user:
         }
       else
         {

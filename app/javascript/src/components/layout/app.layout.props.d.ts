@@ -1,4 +1,4 @@
 export interface AppLayoutProps {
-  children: String | JSX.Element | JSX.Element[]
-  title: String
+  children: string | JSX.Element | JSX.Element[]
+  title: string
 }

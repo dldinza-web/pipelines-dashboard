@@ -1,33 +1,25 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
-export type AuthenticatedUserType = {
+export interface AuthenticatedUserType {
   authenticateUser: {
     user: {
-      id: Number,
-      username: String,
-      __typename: "User"
-    },
-    errors: [String] | null,
-    __typename: "AuthenticateUserPayload"
-  }
+      id: number;
+      username: string;
+      __typename: 'User';
+    };
+    errors: [string] | null;
+    __typename: 'AuthenticateUserPayload';
+  };
 }
 
 export const gqlMutationAuthenticate = gql`
-  mutation authenticateUser(
-    $username: String!,
-    $password: String!
-  ) {
-    authenticateUser(
-      input: {
-        username: $username,
-        password: $password
-      }
-    ) {
+  mutation authenticateUser($username: String!, $password: String!) {
+    authenticateUser(input: { username: $username, password: $password }) {
       user {
-        id,
+        id
         username
       }
       errors
     }
   }
-`
+`;

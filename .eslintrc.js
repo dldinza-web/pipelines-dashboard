@@ -57,7 +57,7 @@ const eslintRules = {
   eqeqeq: ['error', 'smart'],
   'id-blacklist': 'off',
   'id-match': 'error',
-  'import/no-default-export': 'error',
+  'import/prefer-default-export': 'error',
   'import/order': 'off',
   'max-classes-per-file': 'off',
   'no-bitwise': 'error',

@@ -9,11 +9,19 @@
 accounts = [
   'ryan@testing.com',
   'dennys@testing.com',
-  'david@testing.com',
+  'david@testing.com'
 ]
 
-# Default Passord is in settings.yml
+# Default Password is in settings.yml
+
+User.delete_all
+Project.delete_all
 
 accounts.each do |account|
   User.create!(username: account)
 end
+
+3.times.each do
+  FactoryBot.create(:project)
+end
+FactoryBot.create(:project, name: "Lisa's Project")

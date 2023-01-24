@@ -1,6 +1,7 @@
 require:
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-graphql
 
 Rails:
   Enabled: true
@@ -14,23 +15,17 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
   Exclude:
+    - 'app/assets/**/*'
+    - 'app/javascript/**/*'
     - 'db/schema.rb'
-    - '**/*.js'
-    - '**/*.jsx'
-    - '**/*.tsx'
-    - '**/*.d.ts'
-    - '**/*.map'
-    - '**/*.scss'
-    - '**/*.css'
-    - '**/*.key'
-    - '**/*.yml'
-    - '**/*.enc'
-    - '**/*.erb'
-    - '**/.keep'
     - 'bin/**/*'
     - 'node_modules/**/*'
+    - '**/*.erb'
+    - '**/.keep'
     - '**/*.tsbuildinfo'
     - '**/.DS_Store'
+    - '**/*.yml'
+    - '**/*.enc'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -49,4 +44,19 @@ Style/RedundantFetchBlock:
 
 Metrics/MethodLength:
   Max: 30
+
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+GraphQL/ObjectDescription:
+  Enabled: false
+
+GraphQL/FieldDescription:
+  Enabled: false
+
+GraphQL/ArgumentDescription:
+  Enabled: false
 

@@ -7,13 +7,17 @@
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "rebuild": "npm run build && npm run build:css && npm run tsc && npm run lint",
     "tsc": "tsc --project tsconfig.json",
-    "eslint": "eslint app/javascript/**/*.ts[x]",
-    "eslint-ci": "node --max-old-space-size=4096 eslint app/javascript/**/*.ts[x]",
-    "eslint-fix": "eslint --fix --cache app/javascript/**/*.ts[x]",
-    "prettier": "prettier --check app/javascript/**/*.ts[x]",
-    "prettier-fix": "prettier --write app/javascript/**/*.ts[x]",
+    "eslint": "eslint 'app/javascript/**/*.ts[x]'",
+    "eslint-fix": "eslint --fix --cache 'app/javascript/**/*.ts[x]'",
+    "prettier": "prettier --check 'app/javascript/**/*.ts[x]'",
+    "prettier-fix": "prettier --write 'app/javascript/**/*.ts[x]'",
+    "rubocop": "bundle exec rubocop",
+    "rubocop-fix": "bundle exec rubocop -A",
     "check-types": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput",
-    "check-code": "yarn eslint && yarn check-types"
+    "check-code": "yarn rubocop && yarn prettier && yarn eslint && yarn check-types",
+    "rails-test": "bundle exec rspec --format documentation",
+    "ci-eslint": "node --max-old-space-size=4096 eslint 'app/javascript/**/*.ts[x]'",
+    "ci-rails-test": "bundle exec rspec"
   },
   "dependencies": {
     "@apollo/client": "^3.7.4",

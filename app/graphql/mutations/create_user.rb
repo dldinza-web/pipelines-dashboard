@@ -2,11 +2,11 @@ module Mutations
   class CreateUser < Mutations::BaseMutation
     null true
 
-    argument  :username, String, required: true
     argument  :password, String, required: false
+    argument  :username, String, required: true
 
-    field :user, Types::UserType
     field :errors, [String], null: false
+    field :user, Types::UserType
 
     def resolve(username:, password: nil)
       user = User.new(username:, password:)

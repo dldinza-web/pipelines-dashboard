@@ -1,14 +1,16 @@
-import { createBrowserRouter } from "react-router-dom";
-import ProjectsPipelinePage from "src/components/pages/projects_pipeline/projects_pipeline.page";
-import SignInPage from "src/components/pages/sign-in/sign-in.page";
+import React from 'react';
+import ProjectsPipelinePage from 'src/components/pages/projects_pipeline/projects_pipeline.page';
+import SignInPage from 'src/components/pages/sign-in/sign-in.page';
 
-export const routes = [
+const routes = [
   {
-    path: "/",
-    element: <SignInPage />
+    path: '/',
+    element: <SignInPage />,
   },
   {
-    path: "/projects_pipeline",
-    element: <ProjectsPipelinePage />
-  }
-]
+    path: '/projects_pipeline',
+    element: <ProjectsPipelinePage />,
+  },
+];
+
+export default routes;

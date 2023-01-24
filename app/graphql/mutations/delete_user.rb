@@ -4,8 +4,8 @@ module Mutations
 
     argument :id, Integer, required: true
 
-    field :user, Types::UserType
     field :errors, [String], null: false
+    field :user, Types::UserType
 
     def resolve(id:)
       user = begin
