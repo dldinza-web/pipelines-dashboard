@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-5.times.each do
-  FactoryBot.create(:user)
+accounts = [
+  'ryan@testing.com',
+  'dennys@testing.com',
+  'david@testing.com',
+]
+
+# Default Passord is in settings.yml
+
+accounts.each do |account|
+  User.create!(username: account)
 end

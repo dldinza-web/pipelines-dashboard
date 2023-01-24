@@ -1,14 +1,17 @@
 import React from 'react'
+import { Box } from '@mui/material'
 import { AppLayoutProps } from './app.layout.props'
+import * as Styles from './styles/bg.styled'
 
 const AppLayout = (props: AppLayoutProps) => {
   return (
-    <>
-      <header>{props.title}</header>
-      <div>
-        {props.children}
-      </div>
-    </>
+    <Styles.Bg>
+      <Box sx={Styles.headerStyles}>
+        {props.title}
+      </Box>
+
+      {props.children}
+    </Styles.Bg>
   )
 }
 

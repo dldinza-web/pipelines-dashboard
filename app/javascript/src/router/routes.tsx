@@ -8,7 +8,7 @@ export const routes = [
     element: <SignInPage />
   },
   {
-    path: "projects_pipeline",
+    path: "/projects_pipeline",
     element: <ProjectsPipelinePage />
   }
 ]

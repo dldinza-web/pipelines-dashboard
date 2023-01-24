@@ -1,4 +1,21 @@
 // Entry point for your Sass build
-body {
+@font-face {
+  font-family: 'Neue Plak';
+  src: url('Neue Plak Regular.ttf')
+}
+
+@font-face {
+  font-family: 'Neue Plak Bold';
+  src: url('Neue Plak Bold.ttf')
+}
+
+@font-face {
+  font-family: 'Neue Plak Light';
+  src: url('Neue Plak Light.ttf')
+}
+
+html, body {
   margin: 0;
+  height: 100%;
+  font-family: 'Neue Plak';
 }
