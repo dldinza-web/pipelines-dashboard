@@ -14,14 +14,13 @@ accounts = [
 
 # Default Password is in settings.yml
 
-User.delete_all
-Project.delete_all
+User.destroy_all
+Project.destroy_all
 
-accounts.each do |account|
-  User.create!(username: account)
-end
+accounts.each { |account| User.create!(username: account) }
 
-3.times.each do
-  FactoryBot.create(:project)
-end
-FactoryBot.create(:project, name: "Lisa's Project")
+project = FactoryBot.create(:project, :with_pipeline_statuses, name: "Lisa's Project")
+project.pipeline_statuses.update(:all, passed: true)
+
+more_projects = Array.new(4).map { FactoryBot.create(:project, :with_pipeline_statuses) }
+more_projects.first.pipeline_statuses.destroy_all

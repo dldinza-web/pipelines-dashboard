@@ -18,8 +18,7 @@ import {
 } from 'src/graphql/mutations/users.mutations';
 import * as Styles from './styles/sign-in.styles';
 import CryptoJS from 'crypto-js';
-
-const CURRENT_USER_LSTG_KEY = 'app:currentUser';
+import { CURRENT_USER_LSTG_KEY } from '../../constants/sign-in.constants';
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -27,6 +26,8 @@ const SignInForm = () => {
   const [username, setUsername] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const [errors, setErrors] = React.useState<string[]>([]);
+
+  localStorage.removeItem(CURRENT_USER_LSTG_KEY);
 
   const onAuthenticationFailure = () => {
     setErrors(['API failed. Please contact Technical Support.']);
@@ -63,10 +64,6 @@ const SignInForm = () => {
 
     gqlAuthenticate({ variables: { username, password: encryptedTest } });
   };
-
-  React.useEffect(() => {
-    localStorage.removeItem(CURRENT_USER_LSTG_KEY);
-  }, []);
 
   return (
     <Paper elevation={1} sx={Styles.SignInBox}>

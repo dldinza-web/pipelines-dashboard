@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_23_021744) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_25_154340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pipeline_statuses", force: :cascade do |t|
+    t.boolean "passed", default: false, null: false
+    t.datetime "reported_time", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_pipeline_statuses_on_project_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
@@ -28,4 +37,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_23_021744) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "pipeline_statuses", "projects"
 end

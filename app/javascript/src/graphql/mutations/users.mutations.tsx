@@ -1,5 +1,10 @@
 import { gql } from '@apollo/client';
 
+export interface UserInterface {
+  id: number;
+  username: string;
+}
+
 export interface AuthenticatedUserType {
   authenticateUser: {
     user: {

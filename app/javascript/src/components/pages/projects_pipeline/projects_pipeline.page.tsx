@@ -1,10 +1,11 @@
 import React from 'react';
 import AppLayout from 'src/components/layout/app.layout';
+import ProjectList from './components/project-list/project-list';
 
 const ProjectsPipelinePage = () => {
   return (
     <AppLayout title="Projects">
-      <p>Projects Pipeline</p>
+      <ProjectList />
     </AppLayout>
   );
 };
