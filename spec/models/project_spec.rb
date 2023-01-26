@@ -24,4 +24,39 @@ RSpec.describe Project, type: :model do
     expect { project.reload }.to raise_exception ActiveRecord::RecordNotFound
     expect(PipelineStatus.where(id: pipelines_statuses_ids)).to be_empty
   end
+
+  it 'assigns developers to a project' do
+    project = create(:project)
+
+    project.users.concat Array.new(3).map{ create(:user) }
+    project.save!
+
+    expect(project.users).not_to be_empty
+  end
+
+  it 'removes all teams if project is destroyed' do
+    project = create(:project, :with_team)
+
+    team_ids = project.teams.map(&:id)
+
+    project.destroy
+
+    expect(Team.where(id: team_ids)).to be_empty
+  end
+
+  context "Invalid scenarios" do
+    it 'name is required' do
+      project = build(:project, name: [nil, ''].sample)
+
+      expect(project.valid?).to be false
+      expect(project.errors.full_messages).to include "Name can't be blank"
+    end
+
+    it 'url is required' do
+      project = build(:project, url: [nil, ''].sample)
+
+      expect(project.valid?).to be false
+      expect(project.errors.full_messages).to include "Url can't be blank"
+    end
+  end
 end

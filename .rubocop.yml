@@ -60,3 +60,6 @@ GraphQL/FieldDescription:
 GraphQL/ArgumentDescription:
   Enabled: false
 
+Rails/I18nLocaleTexts:
+  Enabled: false
+

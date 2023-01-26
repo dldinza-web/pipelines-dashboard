@@ -15,4 +15,14 @@ FactoryBot.define do
       project.reload
     end
   end
+
+  trait :with_team do
+    after(:create) do |project|
+      users = Array.new(3).map { create(:user) }
+
+      project.users = users
+      project.save!
+      project.reload
+    end
+  end
 end

@@ -21,6 +21,10 @@ export const gqlQueryProjects = gql`
         passed
         reportedTime
       }
+      users {
+        id
+        username
+      }
     }
   }
 `

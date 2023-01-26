@@ -44,5 +44,30 @@ module Queries
 
       expect(data_projects.first['pipelineStatuses']).not_to be_empty
     end
+
+    it "load teams" do
+      users = Array.new(3).map { create(:user) }
+
+      project = create(:project)
+      project.users = users
+      project.save!
+
+      request_body = <<~GQL
+        query {
+          projects {
+            users {
+              id
+              username
+            }
+          }
+        }
+      GQL
+
+      post '/graphql', params: { query: request_body }
+      response_json = JSON.parse response.body
+      data_projects = response_json['data']['projects']
+
+      expect(data_projects.first['users']).not_to be_empty
+    end
   end
 end
