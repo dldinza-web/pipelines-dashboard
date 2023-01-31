@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Alert,
   Backdrop,
-  Box,
   Button,
   CircularProgress,
   Paper,
@@ -11,7 +10,7 @@ import {
 } from '@mui/material';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
-import FormTitle from 'src/components/shared/form-title/form-title';
+import FormTitle from 'src/components/shared/form-title';
 import {
   gqlMutationAuthenticate,
   AuthenticatedUserType,
@@ -19,6 +18,7 @@ import {
 import * as Styles from './styles/sign-in.styles';
 import CryptoJS from 'crypto-js';
 import { CURRENT_USER_LSTG_KEY } from '../../constants/sign-in.constants';
+import ButtonsBox from 'src/components/shared/buttons-group';
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -96,11 +96,11 @@ const SignInForm = () => {
           onChange={(e) => setPassword(e.currentTarget.value)}
         />
 
-        <Box sx={Styles.SignInButtons}>
+        <ButtonsBox>
           <Button variant="contained" onClick={onSubmit}>
             Sign in
           </Button>
-        </Box>
+        </ButtonsBox>
       </Stack>
 
       <Backdrop sx={Styles.Overlay} open={gqlAuthenticateResponse.loading}>

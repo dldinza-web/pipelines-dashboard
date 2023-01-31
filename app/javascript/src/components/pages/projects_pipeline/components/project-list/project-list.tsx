@@ -6,7 +6,7 @@ import {
   ProjectType,
 } from 'src/graphql/queries/projects.query';
 import * as Styles from './project-list.styles';
-import ProjectBox from '../../project-box';
+import ProjectBox from '../project-box/project-box';
 
 const ProjectList = () => {
   const responseProjects = useQuery(gqlQueryProjects);

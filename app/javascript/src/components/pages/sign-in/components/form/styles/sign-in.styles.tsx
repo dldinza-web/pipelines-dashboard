@@ -9,13 +9,6 @@ export const SignInFields = {
   mt: 2,
 };
 
-export const SignInButtons = {
-  borderTop: 1,
-  borderColor: 'divider',
-  paddingTop: 2,
-  textAlign: 'right',
-};
-
 export const Overlay = {
   color: '#fff',
   zIndex: 1,

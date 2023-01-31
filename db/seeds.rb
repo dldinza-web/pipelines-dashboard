@@ -30,4 +30,4 @@ more_projects[2].users = [users[2], users[1]]
 more_projects[2].save!
 
 more_projects[0].users = [users[0]]
-more_projects[1].save!
+more_projects[0].save!

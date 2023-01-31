@@ -11,4 +11,10 @@ export interface Project {
   name: string
   url: string
   pipelineStatuses?: [PipelineStatus]
+  users?: [User]
+}
+
+export interface User {
+  id: number
+  username: string
 }

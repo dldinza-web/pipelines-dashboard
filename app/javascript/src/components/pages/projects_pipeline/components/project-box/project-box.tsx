@@ -2,6 +2,7 @@ import React from 'react';
 
 import BlockIcon from '@mui/icons-material/Block';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Paper,
   Box,
@@ -10,14 +11,16 @@ import {
   ListItemText,
   ListItem,
   ListItemIcon,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Button,
+  Chip,
 } from '@mui/material';
 import * as Styles from 'src/components/pages/projects_pipeline/components/project-list/project-list.styles';
-import { ProjectType } from 'src/graphql/queries/projects.query';
 import moment from 'moment';
-
-interface ProjectBoxProps {
-  project: ProjectType;
-}
+import { ProjectBoxProps } from './project-box.d';
+import ButtonsBox from 'src/components/shared/buttons-group';
 
 const ProjectBox = (props: ProjectBoxProps) => {
   const { project } = props;
@@ -69,6 +72,43 @@ const ProjectBox = (props: ProjectBoxProps) => {
             </>
           )}
         </List>
+      </Box>
+
+      <Box>
+        <Accordion sx={{ boxShadow: 'none' }}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            {`${
+              project.users && project.users.length > 0
+                ? `(${project.users.length})`
+                : ''
+            } Developers`}
+          </AccordionSummary>
+          <AccordionDetails>
+            <List>
+              {project.users && project.users.length > 0 ? (
+                <>
+                  {project.users.map((user) => (
+                    <ListItem key={`user_${user.id}`}>
+                      <ListItemText primary={user.username} />
+                    </ListItem>
+                  ))}
+                </>
+              ) : (
+                <ListItem sx={{ justifyContent: 'center' }}>
+                  <Chip label="No developer found" variant="outlined" />
+                </ListItem>
+              )}
+            </List>
+
+            <ButtonsBox>
+              <Button variant="contained">Join</Button>
+            </ButtonsBox>
+          </AccordionDetails>
+        </Accordion>
       </Box>
     </Paper>
   );
