@@ -12,7 +12,8 @@ export const Item = {
   display: 'inline-block',
   marginRight: 2,
   marginBottom: 2,
-  verticalAlign: 'top'
+  verticalAlign: 'top',
+  position: 'relative'
 }
 
 export enum PipelineStatus {

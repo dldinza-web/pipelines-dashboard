@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import BlockIcon from '@mui/icons-material/Block';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Paper,
   Box,
@@ -11,19 +10,25 @@ import {
   ListItemText,
   ListItem,
   ListItemIcon,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Button,
-  Chip,
+  Backdrop,
+  CircularProgress,
 } from '@mui/material';
 import * as Styles from 'src/components/pages/projects_pipeline/components/project-list/project-list.styles';
 import moment from 'moment';
 import { ProjectBoxProps } from './project-box.d';
-import ButtonsBox from 'src/components/shared/buttons-group';
+import ProjectDevelopers from '../project-developers/project-developers';
+import { CURRENT_USER_LSTG_KEY } from 'src/components/pages/sign-in/constants/sign-in.constants';
+import { useMutation } from '@apollo/client';
+import {
+  gqlMutationAddUserToProject,
+  UserAddedType,
+} from 'src/graphql/mutations/projects.mutations';
+import * as CommonStyles from 'src/components/shared/styles/common';
 
 const ProjectBox = (props: ProjectBoxProps) => {
   const { project } = props;
+
+  const [errorsAddUser, setErrorsAddUser] = useState<string[]>([]);
 
   const getProjectPipelinesStatus = () => {
     if (
@@ -36,6 +41,44 @@ const ProjectBox = (props: ProjectBoxProps) => {
     return project.pipelineStatuses.find((i) => i.passed === false)
       ? Styles.PipelineStatus.oneFailed
       : Styles.PipelineStatus.allPassed;
+  };
+
+  const onAddUserToProjectCompleted = (data: UserAddedType) => {
+    if (data?.addUserToProject?.project?.id) {
+      props.refreshAllProjects();
+    }
+
+    if (data?.addUserToProject?.errors.length > 0) {
+      setErrorsAddUser(data?.addUserToProject?.errors);
+    }
+  };
+
+  const onAddUserToProjectFailed = () => {
+    setErrorsAddUser(['API error joining user.']);
+  };
+
+  const [gqlAddUserToProject, gqlAddUserToProjectResponse] = useMutation(
+    gqlMutationAddUserToProject,
+    {
+      onCompleted: onAddUserToProjectCompleted,
+      onError: onAddUserToProjectFailed,
+    }
+  );
+
+  const onAddUserToProject = () => {
+    const currentUserData = localStorage.getItem(CURRENT_USER_LSTG_KEY);
+    const currentUser = currentUserData ? JSON.parse(currentUserData) : null;
+    setErrorsAddUser([]);
+
+    if (
+      project.users &&
+      currentUser &&
+      !project.users.find((user) => user.username === currentUser.username)
+    ) {
+      gqlAddUserToProject({
+        variables: { username: currentUser.username, projectId: project.id },
+      });
+    }
   };
 
   return (
@@ -74,44 +117,20 @@ const ProjectBox = (props: ProjectBoxProps) => {
         </List>
       </Box>
 
-      <Box>
-        <Accordion sx={{ boxShadow: 'none' }}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            {`${
-              project.users && project.users.length > 0
-                ? `(${project.users.length})`
-                : ''
-            } Developers`}
-          </AccordionSummary>
-          <AccordionDetails>
-            <List>
-              {project.users && project.users.length > 0 ? (
-                <>
-                  {project.users.map((user) => (
-                    <ListItem key={`user_${user.id}`}>
-                      <ListItemText primary={user.username} />
-                    </ListItem>
-                  ))}
-                </>
-              ) : (
-                <ListItem sx={{ justifyContent: 'center' }}>
-                  <Chip label="No developer found" variant="outlined" />
-                </ListItem>
-              )}
-            </List>
+      <ProjectDevelopers
+        users={project.users ? project.users : []}
+        onAddUserToProject={onAddUserToProject}
+        errorsAddUser={errorsAddUser}
+      />
 
-            <ButtonsBox>
-              <Button variant="contained">Join</Button>
-            </ButtonsBox>
-          </AccordionDetails>
-        </Accordion>
-      </Box>
+      <Backdrop
+        open={gqlAddUserToProjectResponse.loading}
+        sx={CommonStyles.Overlay}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Paper>
   );
 };
 
-export default ProjectBox;
+export default React.memo(ProjectBox);
