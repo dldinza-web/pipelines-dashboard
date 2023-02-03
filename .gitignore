@@ -45,3 +45,6 @@ config/environments/*.local.yml
 # Files
 .DS_Store
 *.tsbuildinfo
+
+# Cypress
+spec/cypress/screenshots/*

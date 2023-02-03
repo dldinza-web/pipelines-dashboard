@@ -78,6 +78,8 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
+    cypress-on-rails (1.13.1)
+      rack
     database_cleaner-active_record (2.0.1)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
@@ -293,6 +295,7 @@ DEPENDENCIES
   bootsnap
   config (~> 4.1.0)
   cssbundling-rails
+  cypress-on-rails (~> 1.0)
   database_cleaner-active_record (~> 2.0.1)
   debug
   dotenv-rails (~> 2.8.1)
