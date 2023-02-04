@@ -18,7 +18,7 @@ FactoryBot.define do
 
   trait :with_team do
     after(:create) do |project|
-      users = Array.new(3).map { create(:user) }
+      users = Array.new(3).map { create(:user, password: Faker::Internet.password) }
 
       project.users = users
       project.save!

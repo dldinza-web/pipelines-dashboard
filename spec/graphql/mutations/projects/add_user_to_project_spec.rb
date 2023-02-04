@@ -5,7 +5,7 @@ module Mutations
     describe AddUserToProject, type: :request do
       it 'add user to existing project' do
         project = create(:project)
-        user = create(:user)
+        user = create(:user, password: 'th3_p4ss')
 
         request_body = <<~GQL
           mutation {
@@ -61,7 +61,7 @@ module Mutations
         end
 
         it "project not found" do
-          user = create(:user)
+          user = create(:user, password: 'th3_p4ss')
 
           request_body = <<~GQL
             mutation {

@@ -6,18 +6,26 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-accounts = [
-  'ryan@testing.com',
-  'dennys@testing.com',
-  'david@testing.com'
-]
+default_accounts = {
+  usernames: [
+    'ryan@testing.com',
+    'dennys@testing.com',
+    'david@testing.com'
+  ],
+  password: Digest::SHA1.hexdigest('123abc')
+}
 
 # Default Password is in settings.yml
 
 User.destroy_all
 Project.destroy_all
 
-users = accounts.map { |account| User.create!(username: account) }
+users = default_accounts[:usernames].map do |username|
+  User.create!(
+    username:,
+    password: default_accounts[:password]
+  )
+end
 
 project = FactoryBot.create(:project, :with_pipeline_statuses, name: "Lisa's Project")
 project.pipeline_statuses.update(:all, passed: true)

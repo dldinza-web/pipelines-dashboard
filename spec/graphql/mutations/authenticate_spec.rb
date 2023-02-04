@@ -3,7 +3,7 @@ require 'rails_helper'
 module Mutations
   describe AuthenticateUser, type: :request do
     it 'authenticates an user' do
-      user = create(:user, username: 'ryan@testing.com', password: nil)
+      user = create(:user, username: 'ryan@testing.com', password: 'th3_p4ss')
 
       request_body = <<~GQL
         mutation {

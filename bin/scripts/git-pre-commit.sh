@@ -15,4 +15,4 @@ fi
 
 echo "\nAnalyzing the Source Code:\n"
 
-yarn check-code
+yarn check:code

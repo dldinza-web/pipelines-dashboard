@@ -11,6 +11,7 @@ import {
   ListItem,
   Alert,
   Stack,
+  Tooltip,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ButtonsBox from 'src/components/shared/buttons-group';
@@ -33,7 +34,14 @@ const ProjectDevelopers = (props: ProjectDevelopersProps) => {
       currentUser &&
       props.users.find((user) => user.username === currentUser.username)
     ) {
-      return <FiberManualRecordIcon sx={{ color: 'green' }} />;
+      return (
+        <Tooltip title="Current user assigned" arrow>
+          <FiberManualRecordIcon
+            sx={{ color: 'green' }}
+            className="current-user-assigned"
+          />
+        </Tooltip>
+      );
     }
 
     return <></>;
@@ -45,7 +53,7 @@ const ProjectDevelopers = (props: ProjectDevelopersProps) => {
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
-          id="panel1a-header"
+          data-test-id="accordion-header"
           sx={{ color: '#5a9cdf' }}
         >
           <>
@@ -74,7 +82,10 @@ const ProjectDevelopers = (props: ProjectDevelopersProps) => {
               <>
                 {props.users.map((user) => (
                   <ListItem key={`user_${user.id}`}>
-                    <ListItemText primary={user.username} />
+                    <ListItemText
+                      className="username"
+                      primary={user.username}
+                    />
                   </ListItem>
                 ))}
               </>
@@ -89,6 +100,7 @@ const ProjectDevelopers = (props: ProjectDevelopersProps) => {
             <Button
               variant="contained"
               onClick={() => props.onAddUserToProject()}
+              className="btnJoin"
             >
               Join
             </Button>

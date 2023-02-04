@@ -12,7 +12,7 @@ module Queries
         }
       GQL
 
-      users = Array.new(2).map {create(:user)}
+      users = Array.new(2).map {create(:user, password: 'th3_p4ss')}
 
       post '/graphql', params: { query: request_body }
       json = JSON.parse response.body

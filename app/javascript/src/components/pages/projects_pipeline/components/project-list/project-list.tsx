@@ -17,7 +17,7 @@ const ProjectList = () => {
   };
 
   return (
-    <Box sx={Styles.ListContainer}>
+    <Box sx={Styles.ListContainer} data-test-id="project-list">
       {!responseProjects.loading &&
         !responseProjects.error &&
         responseProjects.data && (

@@ -46,7 +46,7 @@ module Queries
     end
 
     it "load teams" do
-      users = Array.new(3).map { create(:user) }
+      users = Array.new(3).map { create(:user, password: 'th3_p4ss') }
 
       project = create(:project)
       project.users = users

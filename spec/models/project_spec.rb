@@ -28,7 +28,7 @@ RSpec.describe Project, type: :model do
   it 'assigns developers to a project' do
     project = create(:project)
 
-    project.users.concat Array.new(3).map{ create(:user) }
+    project.users.concat Array.new(3).map{ create(:user, password: 'th3_p4ss') }
     project.save!
 
     expect(project.users).not_to be_empty

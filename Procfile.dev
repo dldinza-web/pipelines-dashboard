@@ -1,3 +1,3 @@
 js: yarn build --watch
 css: yarn build:css --watch
-app: yarn check-code && unset PORT && bin/rails server
+app: yarn check:code && unset PORT && bin/rails server

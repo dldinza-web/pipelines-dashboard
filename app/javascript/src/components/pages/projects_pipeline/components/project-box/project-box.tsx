@@ -82,7 +82,11 @@ const ProjectBox = (props: ProjectBoxProps) => {
   };
 
   return (
-    <Paper sx={Styles.Item}>
+    <Paper
+      sx={Styles.Item}
+      id={`project_${props.project.id}`}
+      className="project-box"
+    >
       <Styles.ProjectTitle status={getProjectPipelinesStatus()}>
         {props.project.name}
       </Styles.ProjectTitle>

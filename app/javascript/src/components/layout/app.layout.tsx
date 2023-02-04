@@ -25,8 +25,12 @@ const AppLayout = (props: AppLayoutProps) => {
 
         {user && (
           <Box id="current-user">
-            {user?.username}
-            <Button variant="outlined" onClick={onLogout}>
+            <span>{user?.username}</span>
+            <Button
+              variant="outlined"
+              onClick={onLogout}
+              data-test-id="btnLogout"
+            >
               Logout
             </Button>
           </Box>

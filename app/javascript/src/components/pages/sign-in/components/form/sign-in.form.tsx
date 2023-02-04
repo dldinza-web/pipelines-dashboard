@@ -73,9 +73,14 @@ const SignInForm = () => {
         <FormTitle>Sign In</FormTitle>
 
         {errors.length > 0 && (
-          <Stack direction="column" spacing={2} sx={Styles.SignInFields}>
+          <Stack
+            direction="column"
+            spacing={2}
+            sx={Styles.SignInFields}
+            data-test-id="messages-box"
+          >
             {errors.map((msg, i) => (
-              <Alert key={`error_${i}`} severity="error">
+              <Alert key={`error_${i}`} severity="error" className="msg-error">
                 {msg}
               </Alert>
             ))}
@@ -100,7 +105,11 @@ const SignInForm = () => {
           />
 
           <ButtonsBox>
-            <Button variant="contained" onClick={onSubmit}>
+            <Button
+              data-test-id="btnSignIn"
+              variant="contained"
+              onClick={onSubmit}
+            >
               Sign in
             </Button>
           </ButtonsBox>

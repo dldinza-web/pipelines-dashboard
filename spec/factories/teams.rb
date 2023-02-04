@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :team do
-    user
+    user { create(:user, password: Faker::Internet.password) }
     project
   end
 end
