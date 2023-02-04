@@ -200,7 +200,9 @@ module.exports = {
     'react',
     'react-hooks',
     'import',
-    'react-data-attr'
+    'react-data-attr',
+    'testing-library',
+    'jest-dom'
   ],
   extends: [
     'eslint:recommended',
