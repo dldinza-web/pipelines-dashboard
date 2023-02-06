@@ -1,24 +1,41 @@
-# README
+# Artium - Pipelines Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Dashboard to visualize the status of Pipelines. Capability to assign developers to projects.
 
-Things you may want to cover:
+**Description:**
+The React application is connected to a real backend server. The database is Postgres and the API is GraphQL. The Automation Tests are in Cypress.
 
-* Ruby version
+## Installation
 
-* System dependencies
+### Technical Requirements
 
-* Configuration
+- `ruby-3.1.0`: Install through RVM: `rvm install 3.1.0` and use it `rvm use 3.1.0`
+- `node v18.13.0`: Install through NVM: `nvm install 18.13.0` and use it `nvm use 18.13.0`
 
-* Database creation
+**Note:**
+Install Ruby Version Manager RVM: `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
+Install Node Version Manager NVM: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash`
 
-* Database initialization
+### Steps
 
-* How to run the test suite
+1. Clone or download the repository: `git clone git@github.com:dldinza-web/pipelines-dashboard.git`. **Author:** Dennys Lopez Dinza *@dldinza-web*
+2. Go to the project directory: `cd pipelines-dashboard`
+3. Execute the installation process: `sh ./bin/install.sh`
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Troubleshooting
+Open the file `./bin/install.sh` and execute each command one by one.
 
-* Deployment instructions
+### Run Application
+1. Execute the application: `yarn dev` and open http://localhost:3000/
+2. `Ctrl + C` to close the application
 
-* ...
+**Note:**
+The application shows a form to create Vehicle Reservations. All reservations created are present in a list. User can edit or remove reservations.
+
+### Steps
+
+- Unit Tests TDD: `yarn test:backend`
+- Unit Tests TDD: `yarn test:frontend`
+- Automation Tests ATDD and BDD: `yarn test:env`
+  - Run Cypress: `yarn cypress`
+  - (optional) Run Cypress to run **e2e** Integration Tests manually: `yarn cypress:open`
