@@ -4,7 +4,7 @@ import SignInForm from './components/form/sign-in.form';
 
 const SignInPage = () => {
   return (
-    <AppLayout title="Artium Projects Pipeline">
+    <AppLayout title="Projects Pipeline">
       <SignInForm />
     </AppLayout>
   );

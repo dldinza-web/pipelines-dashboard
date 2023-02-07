@@ -94,16 +94,19 @@ const ProjectBox = (props: ProjectBoxProps) => {
         <List
           subheader={
             <ListSubheader component="div" sx={{ fontSize: 'large' }}>
-              {project.pipelineStatuses && project.pipelineStatuses.length > 1
+              {project.pipelineStatuses && project.pipelineStatuses.length > 0
                 ? 'Pipelines Status'
                 : 'No Pipeline Executed'}
             </ListSubheader>
           }
         >
-          {project.pipelineStatuses && project.pipelineStatuses.length > 1 && (
+          {project.pipelineStatuses && project.pipelineStatuses.length > 0 && (
             <>
               {project.pipelineStatuses.map((status) => (
-                <ListItem key={`pipeline_status_${status.id}`}>
+                <ListItem
+                  key={`pipeline_status_${status.id}`}
+                  role="pepiline-item"
+                >
                   <ListItemIcon>
                     {status.passed ? (
                       <CheckCircleOutlineIcon sx={{ color: 'green' }} />

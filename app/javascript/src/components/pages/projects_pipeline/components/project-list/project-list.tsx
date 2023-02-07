@@ -31,12 +31,12 @@ const ProjectList = () => {
                 />
               )
             )}
-
-            <Backdrop open={responseProjects.loading} sx={CommonStyles.Overlay}>
-              <CircularProgress color="inherit" />
-            </Backdrop>
           </>
         )}
+
+      <Backdrop open={responseProjects.loading} sx={CommonStyles.Overlay}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Box>
   );
 };

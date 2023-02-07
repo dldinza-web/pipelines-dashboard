@@ -1,4 +1,4 @@
-# Artium - Pipelines Project
+# Pipelines Project
 
 Dashboard to visualize the status of Pipelines. Capability to assign developers to projects.
 
@@ -29,10 +29,7 @@ Open the file `./bin/install.sh` and execute each command one by one.
 1. Execute the application: `yarn dev` and open http://localhost:3000/
 2. `Ctrl + C` to close the application
 
-**Note:**
-The application shows a form to create Vehicle Reservations. All reservations created are present in a list. User can edit or remove reservations.
-
-### Steps
+### Tests
 
 - Unit Tests TDD: `yarn test:backend`
 - Unit Tests TDD: `yarn test:frontend`
