@@ -8,7 +8,7 @@ Rails:
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.1.0
+  TargetRubyVersion: 3.1.4
   Include:
     - 'app/**/*'
     - 'db/**/*'

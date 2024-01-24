@@ -9,7 +9,7 @@ The React application is connected to a real backend server. The database is Pos
 
 ### Technical Requirements
 
-- `ruby-3.1.0`: Install through RVM: `rvm install 3.1.0` and use it `rvm use 3.1.0`
+- `ruby-3.1.4`: Install through RVM: `rvm install 3.1.4` and use it `rvm use 3.1.4`
 - `node v18.13.0`: Install through NVM: `nvm install 18.13.0` and use it `nvm use 18.13.0`
 
 **Note:**
